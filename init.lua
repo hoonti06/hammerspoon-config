@@ -211,7 +211,6 @@ do  -- app manager
     end)
 end
 
---[[
 -- spoon plugins
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = false
@@ -220,14 +219,13 @@ function plugInstall()
     local Install=spoon.SpoonInstall
     Install:updateRepo('default')
 
-    --Install:installSpoonFromRepo('Caffeine')
+    Install:installSpoonFromRepo('Caffeine')
 
     hs.alert.show('plugin installed')
 end
-]]
 
 
---require('modules.Caffeine'):init(spoon)
+require('modules.Caffeine'):init(spoon)
 require('modules.inputsource_aurora')
 
 hs.alert.show('loaded')
