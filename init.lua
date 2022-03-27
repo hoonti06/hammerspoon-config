@@ -228,5 +228,7 @@ end
 require('modules.Caffeine'):init(spoon)
 require('modules.inputsource_aurora')
 
+-- plugInstall()
+
 hs.alert.show('loaded')
 
