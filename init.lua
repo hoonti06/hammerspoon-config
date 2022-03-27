@@ -225,7 +225,7 @@ function plugInstall()
 end
 
 
-require('modules.Caffeine'):init(spoon)
+-- require('modules.Caffeine'):init(spoon)
 require('modules.inputsource_aurora')
 
 -- plugInstall()
