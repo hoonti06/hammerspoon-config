@@ -1,27 +1,3 @@
---local test_mode = hs.hotkey.modal.new()
---
---test_mode:bind({}, '1', function() hs.alert.show('test 1') end)
---test_mode:bind({}, '2', function() hs.alert.show('test 2') end)
---test_mode:bind({}, 'a', function() 
---    hs.eventtap.keyStroke({'lcmd'}, 'a')
---end)
---
---hs.hotkey.bind({}, 'F13',
---    function() test_mode:enter() end,
---    function() test_mode:exit() end
---)
-
-vim_arrows = {'h', 'j', 'k', 'l'}
-arrows = {'left', 'down', 'up', 'right'}
-for i = 1, 4 do
-    hs.hotkey.bind({'option', 'shift'}, vim_arrows[i], function()
-        hs.eventtap.keyStroke({'option', 'shift'}, arrows[i])
-    end)
-    hs.hotkey.bind({'option'}, vim_arrows[i], function()
-        hs.eventtap.keyStroke({'option'}, arrows[i])
-    end)
-end
-
 --local win_move = require('modules.winmove')
 local app_man = require('modules.appman')
 
@@ -190,8 +166,8 @@ do  -- app manager
     mode:bind({}, 'm', app_man:toggle('Postman'))
     mode:bind({}, 'r', app_man:toggle('draw.io'))
     mode:bind({}, 's', app_man:toggle('Slack'))
-    mode:bind({}, 'space', app_man:toggle('Terminal'))
-    -- mode:bind({}, 'space', app_man:toggle('iTerm'))
+    --mode:bind({}, 'space', app_man:toggle('Terminal'))
+    mode:bind({}, 'space', app_man:toggle('iTerm'))
     mode:bind({'shift'}, 'v', app_man:toggle('Visual Studio Code'))
 
     mode:bind({}, 'tab', hs.hints.windowHints)
@@ -225,10 +201,13 @@ function plugInstall()
 end
 
 
--- require('modules.Caffeine'):init(spoon)
 require('modules.inputsource_aurora')
 
--- plugInstall()
+
+require('modules.focus-screen')
+
+
+local vim_nav_mode = hs.hotkey.modal.new()
+require('modules.vim-nav'):init(vim_nav_mode)
 
 hs.alert.show('loaded')
-
