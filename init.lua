@@ -137,6 +137,10 @@ do  -- tab move
         end
     end
 
+    -- shift + cmd + 'h' -> tab left 이동
+    -- shift + cmd + 'l' -> tab right 이동
+    hs.hotkey.bind({'shift', 'cmd'}, 'h', tabMove('left'))
+    hs.hotkey.bind({'shift', 'cmd'}, 'l', tabMove('right'))
 
     -- setVimlikeKey()로 설정된 key + ',' -> tab left 이동
     -- setVimlikeKey()로 설정된 key + '.' -> tab right 이동
