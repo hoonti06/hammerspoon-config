@@ -77,6 +77,7 @@ end
 do  -- tab move
     local tabTable = {}
 
+    -- application 별 default로 설정되어 있는 tab 이동 단축키를 tabTable에 저장
     tabTable['Slack'] = {
         left = { mod = {'option'}, key = 'up' },
         right = { mod = {'option'}, key = 'down' }
@@ -105,10 +106,6 @@ do  -- tab move
         left = { mod = {'command', 'shift'}, key = '[' },
         right = { mod = {'command', 'shift'}, key = ']' }
     }
-    tabTable['PhpStorm'] = {
-        left = { mod = {'command', 'shift'}, key = '[' },
-        right = { mod = {'command', 'shift'}, key = ']' }
-    }
     tabTable['Code'] = {
         left = { mod = {'command', 'shift'}, key = '[' },
         right = { mod = {'command', 'shift'}, key = ']' }
@@ -117,9 +114,17 @@ do  -- tab move
         left = { mod = {'command', 'shift'}, key = '[' },
         right = { mod = {'command', 'shift'}, key = ']' }
     }
+    tabTable['PyCharm'] = {
+        left = { mod = {'command', 'shift'}, key = '[' },
+        right = { mod = {'command', 'shift'}, key = ']' }
+    }
     tabTable['_else_'] = {
         left = { mod = {'control'}, key = 'pageup' },
         right = { mod = {'control'}, key = 'pagedown' }
+    }
+    tabTable['Notion'] = {
+        left = { mod = {'control', 'shift'}, key = 'tab' },
+        right = { mod = {'control'}, key = 'tab' }
     }
 
     local function tabMove(dir)
@@ -132,6 +137,9 @@ do  -- tab move
         end
     end
 
+
+    -- setVimlikeKey()로 설정된 key + ',' -> tab left 이동
+    -- setVimlikeKey()로 설정된 key + '.' -> tab right 이동
     vim_mode:bind({}, ',', tabMove('left'), vimlike.close, tabMove('left'))
     vim_mode:bind({}, '.', tabMove('right'), vimlike.close, tabMove('right'))
 end
@@ -158,17 +166,22 @@ do  -- app manager
     mode:bind({}, '/', app_man:toggle('Activity Monitor'))
     mode:bind({}, 'c', app_man:toggle('Google Chrome'))
     mode:bind({}, 'e', app_man:toggle('Finder'))
-    mode:bind({}, 'g', app_man:toggle('DataGrip'))
+    mode:bind({}, 'd', app_man:toggle('DataGrip'))
     mode:bind({}, 'i', app_man:toggle('IntelliJ IDEA'))
     mode:bind({}, 'k', app_man:toggle('KakaoTalk'))
     mode:bind({}, 'n', app_man:toggle('Notion'))
     mode:bind({'shift'}, 'n', app_man:toggle('Notes'))
     mode:bind({}, 'm', app_man:toggle('Postman'))
-    mode:bind({}, 'r', app_man:toggle('draw.io'))
+    --mode:bind({}, 'r', app_man:toggle('draw.io'))
     mode:bind({}, 's', app_man:toggle('Slack'))
     --mode:bind({}, 'space', app_man:toggle('Terminal'))
     mode:bind({}, 'space', app_man:toggle('iTerm'))
     mode:bind({'shift'}, 'v', app_man:toggle('Visual Studio Code'))
+
+    mode:bind({}, '1', app_man:toggle('IntelliJ IDEA'))
+    mode:bind({}, '2', app_man:toggle('iTerm'))
+    mode:bind({}, '3', app_man:toggle('DataGrip'))
+    mode:bind({}, '4', app_man:toggle('Notion'))
 
     mode:bind({}, 'tab', hs.hints.windowHints)
     hs.hints.hintChars = {
@@ -209,5 +222,6 @@ require('modules.focus-screen')
 
 local vim_nav_mode = hs.hotkey.modal.new()
 require('modules.vim-nav'):init(vim_nav_mode)
+
 
 hs.alert.show('loaded')
