@@ -66,7 +66,7 @@ function obj:init(mode)
         { mod={'option', 'shift'} , key='j' , func=rapidKey({'option', 'shift'} , 'down')  , repetition=true } ,
         { mod={'option', 'shift'} , key='k' , func=rapidKey({'option', 'shift'} , 'up')  , repetition=true } ,
         { mod={'option', 'shift'} , key='l' , func=rapidKey({'option', 'shift'} , 'right')  , repetition=true } ,
-        { mod={} , key='d' , func=rapidKey({} , 'delete')  , repetition=true } ,
+        { mod={} , key='x' , func=rapidKey({} , 'forwarddelete')  , repetition=true } ,
         { mod={} , key='u' , func=rapidKey({'cmd'} , 'z')  , repetition=true } ,
         { mod={} , key='r' , func=rapidKey({'cmd', 'shift'} , 'z')  , repetition=true } ,
     }, function(v)
