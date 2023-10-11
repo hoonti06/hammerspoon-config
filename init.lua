@@ -103,8 +103,10 @@ do  -- tab move
         right = { mod = {'shift', 'command'}, key = ']' }
     }
     tabTable['IntelliJ IDEA'] = {
-        left = { mod = {'command', 'shift'}, key = '[' },
-        right = { mod = {'command', 'shift'}, key = ']' }
+        left = { mod = {'command', 'shift', 'ctrl'}, key = '7' },
+        right = { mod = {'command', 'shift', 'ctrl'}, key = '8' },
+        up = { mod = {'command', 'option', 'shift'}, key = '`' },
+        down = { mod = {'command', 'option'}, key = '`' }
     }
     tabTable['Code'] = {
         left = { mod = {'command', 'shift'}, key = '[' },
@@ -118,6 +120,10 @@ do  -- tab move
         left = { mod = {'command', 'shift'}, key = '[' },
         right = { mod = {'command', 'shift'}, key = ']' }
     }
+    tabTable['WebStorm'] = {
+        left = { mod = {'command', 'shift'}, key = '[' },
+        right = { mod = {'command', 'shift'}, key = ']' }
+    }
     tabTable['_else_'] = {
         left = { mod = {'control'}, key = 'pageup' },
         right = { mod = {'control'}, key = 'pagedown' }
@@ -125,6 +131,10 @@ do  -- tab move
     tabTable['Notion'] = {
         left = { mod = {'control', 'shift'}, key = 'tab' },
         right = { mod = {'control'}, key = 'tab' }
+    }
+    tabTable['Obsidian'] = {
+        left = { mod = {'command', 'shift'}, key = '[' },
+        right = { mod = {'command', 'shift'}, key = ']' }
     }
 
     local function tabMove(dir)
@@ -141,6 +151,8 @@ do  -- tab move
     -- shift + cmd + 'l' -> tab right 이동
     hs.hotkey.bind({'shift', 'cmd'}, 'h', tabMove('left'))
     hs.hotkey.bind({'shift', 'cmd'}, 'l', tabMove('right'))
+    hs.hotkey.bind({'shift', 'cmd'}, 'k', tabMove('up'))
+    hs.hotkey.bind({'shift', 'cmd'}, 'j', tabMove('down'))
 
     -- setVimlikeKey()로 설정된 key + ',' -> tab left 이동
     -- setVimlikeKey()로 설정된 key + '.' -> tab right 이동

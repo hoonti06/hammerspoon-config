@@ -143,7 +143,7 @@ local module   = {}
 -- end
 
 -- how quickly must the two single ctrl taps occur?
-module.timeFrame = 0.5
+module.timeFrame = 0.35
 
 -- what to do when the double tap of ctrl occurs
 module.action = function()
